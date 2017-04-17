@@ -54,7 +54,12 @@ var data = {
                 name: 'Test 3',
                 desc: 'Test 3 description.',
                 suite: 'Suite B',
-                result: 'pass'
+                result: 'pass',
+                params: {
+                    param1: 'value1',
+                    param2: 'value2'
+                },
+                files: ['/path/to/file/log.txt', '/path/to/file/screencapture.png']
             }
         ]
     }
