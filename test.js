@@ -8,16 +8,14 @@ const data = {
       name: 'Test 1',
       desc: 'Test 1 description.',
       suite: 'Suite A',
-      result: 'pass',
-      files: ['/Users/admin/Desktop/TestFiles/log0.txt', '/Users/admin/Desktop/TestFiles/log1.txt']
+      result: 'pass'
     },
     {
       name: 'Test 2',
       desc: 'Test 2 description.',
       suite: 'Suite A',
       result: 'fail',
-      reason: 'Assert fail in line 203, example.js',
-      files: ['/Users/admin/Desktop/TestFiles/log0.txt', '/Users/admin/Desktop/TestFiles/log1.txt']
+      reason: 'Assert fail in line 203, example.js'
     },
     {
       name: 'Test 3',
@@ -28,7 +26,7 @@ const data = {
         param1: 'value1',
         param2: 'value2'
       },
-      files: ['/Users/admin/Desktop/TestFiles/log0.txt', '/Users/admin/Desktop/TestFiles/log1.txt']
+      files: ['/path/to/file/log.txt']
     }
     ],
     build: '1.0.0'

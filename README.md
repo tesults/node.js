@@ -2,7 +2,7 @@
 
 Tesults is a test automation results reporting service. https://www.tesults.com
 
-This API library makes it easier to upload your test results in your node application.
+Tesults API library for uploading test results to Tesults in your node application.
 
 ## Installation
 
@@ -23,10 +23,12 @@ Documentation is available at https://www.tesults.com/docs.
 Upload test results using the results method:
 
 ```js
-tesults.results(data, function (err, success, message) {
+tesults.results(data, function (err, response) {
     // err is undefined unless there is a library error
-    // success is a bool, true if results successfully uploaded, false otherwise
-    // message is a string, if success is false, check message to see why upload failed
+    // response.success is a bool, true if results successfully uploaded, false otherwise
+    // response.message is a string, if success is false, check message to see why upload failed
+    // response.warnings is an array, empty if no warnings
+    // response.errors is an array, empty if no errors
 });
 ```
 
