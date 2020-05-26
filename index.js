@@ -164,7 +164,18 @@ exports.results = function (resultsData, callback) {
     "use strict";
     let data = "";
     try {
-        data = JSON.stringify(resultsData);
+        let values = [];
+        data = JSON.stringify(resultsData, (key, value) => {
+            // Custom replacer function to guard against circular structure
+            if (typeof value === 'object' && value !== null) {
+                if (values.includes(value)) {
+                    return;
+                } else {
+                    values.push(value);
+                }
+            }
+            return value;
+        });
     } catch (e) {
         callback(e, {success: false, message: "Invalid results format.", warnings: [], errors: []});
         return;

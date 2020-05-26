@@ -1,5 +1,8 @@
 const tesults = require('./index.js')
 
+let x = { abc: "def"};
+x.y = x;
+
 const data = {
   target: 'target',
   results: {
@@ -8,7 +11,8 @@ const data = {
       name: 'Test 1',
       desc: 'Test 1 description.',
       suite: 'Suite A',
-      result: 'pass'
+      result: 'fail',
+      reason: x
     },
     {
       name: 'Test 2',
