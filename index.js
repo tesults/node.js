@@ -230,10 +230,21 @@ exports.results = function (resultsData, callback) {
                     }
                 }
             } else {
-                const message = JSON.parse(resData).error.message;
+                let message = "Unexpected error";
+                try {
+                    message = JSON.parse(resData).error.message;
+                } catch (err) {
+                    // resData not JSON string
+                }
+                if (message === "Unexpected error") {
+                    try {
+                        message = resData.error.message;
+                    } catch (err) {
+                        // resData not JS Object
+                    }
+                }
                 callback(undefined, {success: false, message: message, warnings: [], errors: [message]});
             }
-            
         });
     });
 
