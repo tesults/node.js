@@ -201,10 +201,23 @@ exports.results = function (resultsData, callback) {
         });
         res.on("end", function () {
             if (res.statusCode === 200) {
-                const responseData = JSON.parse(resData).data;
-                const message = responseData.message;
-                const upload = responseData.upload;
-
+                let responseData = undefined
+                let message = ""
+                let upload = undefined
+                try {
+                    responseData = JSON.parse(resData).data;
+                    message = responseData.message;
+                    upload = responseData.upload;
+                } catch (err) {
+                    try {
+                        responseData = resData.data
+                        message = responseData.message;
+                        upload = responseData.upload;
+                    } catch (err) {
+                        // Unexpected success response
+                        message = "Unexpected success response message"
+                    }
+                }
                 if (upload === undefined) { // No files for upload, finished.
                     callback(undefined, {success: true, message: message, warnings: [], errors: []});
                 } else {
